@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Voice Navigator",
+  "version": "1.0",
+  "description": "Navigate the web using voice commands and text-to-speech",
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting",
+    "commands"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "commands": {
+    "read-selected-text": {
+      "suggested_key": {
+        "default": "Alt+R"
+      },
+      "description": "Read text at cursor position"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  }
+} 

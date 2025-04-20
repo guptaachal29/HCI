@@ -1,0 +1,11 @@
+{
+  "name": "voice-navigator",
+  "version": "1.0.0",
+  "description": "Voice navigation extension",
+  "scripts": {
+    "convert-icons": "node convert_icons.js"
+  },
+  "dependencies": {
+    "sharp": "^0.32.1"
+  }
+} 

@@ -1,0 +1,29 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+node_modules/
+
+# Build directories
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Chrome Extension specific
+*.pem
+*.crx 
