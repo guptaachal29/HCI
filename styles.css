@@ -1,0 +1,36 @@
+/* Color filters for colorblind themes */
+svg {
+    display: none;
+}
+
+/* High Contrast Theme Overrides */
+html[data-theme="high-contrast"] {
+    --text-color: #FFFFFF !important;
+    --background-color: #000000 !important;
+    --link-color: #FFFF00 !important;
+    --border-color: #FFFFFF !important;
+}
+
+/* Ensure text is readable in high contrast mode */
+html[data-theme="high-contrast"] * {
+    color: var(--text-color) !important;
+    background-color: var(--background-color) !important;
+    border-color: var(--border-color) !important;
+}
+
+html[data-theme="high-contrast"] a {
+    color: var(--link-color) !important;
+}
+
+/* Add focus indicators for better accessibility */
+html[data-theme="high-contrast"] *:focus {
+    outline: 2px solid #FFFF00 !important;
+    outline-offset: 2px !important;
+}
+
+/* Colorblind theme styles */
+html[data-theme="protanopia"],
+html[data-theme="deuteranopia"],
+html[data-theme="tritanopia"] {
+    filter: inherit !important;
+} 

@@ -77,6 +77,48 @@
       flex-direction: column;
       gap: 10px;
     }
+    .theme-section {
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 1px solid #ccc;
+    }
+    .theme-option {
+      display: flex;
+      align-items: center;
+      margin: 5px 0;
+      padding: 5px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .theme-option:hover {
+      background-color: #f0f0f0;
+    }
+    .theme-preview {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+    }
+    .high-contrast-preview {
+      background: linear-gradient(45deg, #000 50%, #fff 50%);
+    }
+    .protanopia-preview {
+      background: linear-gradient(45deg, #000 50%, #ff0000 50%);
+    }
+    .deuteranopia-preview {
+      background: linear-gradient(45deg, #000 50%, #00ff00 50%);
+    }
+    .tritanopia-preview {
+      background: linear-gradient(45deg, #000 50%, #0000ff 50%);
+    }
+    .theme-option.active {
+      background-color: #e0e0e0;
+      border: 1px solid #ccc;
+    }
+    .theme-option.active .theme-preview {
+      border-color: #2196F3;
+    }
   </style>
 </head>
 <body>
@@ -93,6 +135,30 @@
         <button id="toggleCursorBtn">Enable Cursor Reading</button>
       </div>
       <p id="ttsStatus" style="font-size: 14px; color: #666;">TTS is disabled</p>
+    </div>
+
+    <div class="theme-section">
+      <h3>Accessibility Themes</h3>
+      <div class="theme-option" data-theme="default">
+        <div class="theme-preview" style="background: #fff;"></div>
+        <span>Default Theme</span>
+      </div>
+      <div class="theme-option" data-theme="high-contrast">
+        <div class="theme-preview high-contrast-preview"></div>
+        <span>High Contrast</span>
+      </div>
+      <div class="theme-option" data-theme="protanopia">
+        <div class="theme-preview protanopia-preview"></div>
+        <span>Protanopia (Red-Blind)</span>
+      </div>
+      <div class="theme-option" data-theme="deuteranopia">
+        <div class="theme-preview deuteranopia-preview"></div>
+        <span>Deuteranopia (Green-Blind)</span>
+      </div>
+      <div class="theme-option" data-theme="tritanopia">
+        <div class="theme-preview tritanopia-preview"></div>
+        <span>Tritanopia (Blue-Blind)</span>
+      </div>
     </div>
 
     <div class="commands section">

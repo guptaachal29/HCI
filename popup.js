@@ -169,4 +169,59 @@ document.addEventListener('DOMContentLoaded', () => {
       ttsStatusText.textContent = 'Error: Could not toggle cursor reading';
     }
   });
+
+  // Theme selection functionality
+  document.querySelectorAll('.theme-option').forEach(option => {
+    option.addEventListener('click', async () => {
+      const theme = option.dataset.theme;
+      
+      // Remove active class from all options
+      document.querySelectorAll('.theme-option').forEach(opt => {
+        opt.classList.remove('active');
+      });
+      
+      // Add active class to selected option
+      option.classList.add('active');
+      
+      try {
+        // Query for the active tab
+        const tabs = await chrome.tabs.query({active: true, currentWindow: true});
+        const activeTab = tabs[0];
+        
+        if (!activeTab || activeTab.url.startsWith('chrome://')) {
+          console.log('Cannot apply theme to chrome:// pages');
+          return;
+        }
+
+        // First inject the CSS
+        await chrome.scripting.insertCSS({
+          target: { tabId: activeTab.id },
+          files: ['styles.css']
+        });
+
+        // Then inject and execute the theme script
+        await chrome.scripting.executeScript({
+          target: { tabId: activeTab.id },
+          files: ['theme.js']
+        });
+
+        // Wait a brief moment for the script to initialize
+        await new Promise(resolve => setTimeout(resolve, 100));
+
+        // Now send the message to apply the theme
+        const response = await chrome.tabs.sendMessage(activeTab.id, {
+          action: 'applyTheme',
+          theme: theme
+        });
+        
+        if (response && response.success) {
+          console.log('Theme applied successfully');
+        } else {
+          throw new Error('Failed to apply theme');
+        }
+      } catch (error) {
+        console.error('Error applying theme:', error);
+      }
+    });
+  });
 }); 

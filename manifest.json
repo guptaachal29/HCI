@@ -1,13 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "Voice Navigator",
+  "name": "Voice Navigation",
   "version": "1.0",
-  "description": "Navigate the web using voice commands and text-to-speech",
+  "description": "A voice-controlled navigation extension with accessibility themes",
   "permissions": [
     "activeTab",
-    "tabs",
     "scripting",
-    "commands"
+    "storage",
+    "tabs"
   ],
   "host_permissions": [
     "<all_urls>"
@@ -31,6 +31,21 @@
   "background": {
     "service_worker": "background.js"
   },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*", "file://*/*"],
+      "js": ["theme.js"],
+      "css": ["styles.css"],
+      "run_at": "document_start",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["styles.css", "theme.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "icons": {
     "16": "images/icon16.png",
     "48": "images/icon48.png",
