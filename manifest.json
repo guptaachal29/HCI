@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Voice Navigation",
+  "name": "WebAble",
   "version": "1.0",
-  "description": "A voice-controlled navigation extension with accessibility themes",
+  "description": "A comprehensive accessibility extension featuring voice navigation and color vision enhancement modes for Chrome",
   "permissions": [
     "activeTab",
     "scripting",
